@@ -1,30 +1,35 @@
 <script lang="ts">
   import PageLayout from "$lib/layout/PageLayout.svelte";
   import Paragraph from "$lib/type/Paragraph.svelte";
-  import BigButton from "$lib/buttons/Button.svelte";
-  import Button from "$lib/buttons/Button.svelte";
-  import Divider from "$lib/type/Divider.svelte";
+  import BigButton from "$lib/buttons/BigButton.svelte";
   import ListItem from "$lib/layout/ListItem.svelte";
+
+  const birthDate = new Date(2008, 9, 20);
+  function calculateAge(d: Date) {
+    const today = new Date();
+    let age = today.getFullYear() - d.getFullYear();
+    const m = today.getMonth() - d.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < d.getDate())) age--;
+    return age;
+  }
+  $: age = calculateAge(birthDate);
 </script>
 
 <PageLayout>
-  <h1 class="text-3xl text-type-emphasized mb-4 flex gap-3 text-center items-center justify-center font-semibold">[ManJar-O]</h1>
+  <img src="/logo.png" alt="JARBREAKER" class="w-36 h-36 mx-auto mb-4 object-cover" />
 
-  <Paragraph className="mt-3 mb-2">
-    ManJar-O (Cooper Ransom) is a passionate 16-year-old software developer and bedroom DJ hailing from Charlotte, North Carolina. With a strong foundation in web development, Cooper is now expanding
-    his creative mediums by joining the world of music production and mixing. His journey is fueled by a relentless drive to blend technology with a new minimal artistic expression.
+  <Paragraph className="mt-3 mb-4">
+    JARBREAKER, aka Cooper Ransom, is a {age}-year-old software developer and bedroom DJ from Charlotte, North Carolina. Having learned software development in his early teens, he channels his passion
+    for creation into making new bold sounds from existing content. His journey fuses technology with a vibrant artistic expression, and a love for all things "people" and music.
   </Paragraph>
 
-  <div class="border border-mono-divider mb-4 p-2">
+  <div class="border border-mono-divider mb-4 p-1.5">
     <ListItem
-      href="https://soundcloud.com/manjar-o"
+      href="https://soundcloud.com/JARBREAKER"
       text="SoundCloud" />
     <ListItem
-      href="https://hearthis.at/manjar-o"
-      text="HearThis.at" />
-    <ListItem
-      href="https://www.youtube.com/@manjar-o"
-      text="YouTube" />
+      href="https://www.instagram.com/jarbreakerdj/"
+      text="Instagram" />
   </div>
 
   <div class="flex flex-row gap-2">
@@ -41,19 +46,5 @@
       className="w-full py-2">
       (980)-297-9605
     </BigButton>
-  </div>
-
-  <Divider />
-  <div class="flex justify-between items-center">
-    <Button
-      title="Livestreams"
-      href="/live">
-      Livestreams
-    </Button>
-    <Button
-      title="Source code"
-      href="https://github.com/itzcozi/manjar-o">
-      Source code
-    </Button>
   </div>
 </PageLayout>
