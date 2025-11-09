@@ -1,9 +1,9 @@
 {
-  "name": "JARBREAKER",
+  "name": "CooperRansom",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/itzcozi/JARBREAKER.git"
+    "url": "https://github.com/itzcozi/manjar-o.git"
   },
   "scripts": {
     "dev": "vite dev",
